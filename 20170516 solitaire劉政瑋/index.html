@@ -1,0 +1,154 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>記憶小遊戲</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="jquery.toast.css">
+<script src="bootstrap.min.js"></script>
+<script type="text/javascript" src="jquery.js">
+
+</script>
+	<script>
+		var flag=true,one=0,two=0;
+		var pai=[1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8];
+    	function pocker(one){
+	      document.getElementById("img"+one).src=pai[one]+".jpg";
+	      var o=document.getElementById("img"+one);
+		  var u=document.getElementById("img"+two);
+	      if(flag)//第一張
+	      {
+	       two=one;
+	       flag=false;
+	      }
+	      else //第二張
+	      {
+	       if(pai[one]==pai[two]){
+						
+						o.style.display="none";
+                        u.style.display="none";
+                        alert("消除了");
+						pai[one]=-1;
+						pai[two]=-1;
+						success();
+	        }
+	        else
+	        {
+	         setTimeout("close("+one+","+two+")",400);	
+	        }
+	        flag=true;
+		   }
+    	}
+		
+		
+		
+		//開始掀牌
+		function showtime()
+		{
+		 for(var i=0;i<=pai.length;i++)
+		 {
+		 document.getElementById("img"+i).src=pai[i]+".jpg";	
+		
+		 }
+		}
+		 //開始蓋牌
+		 function closetime()
+		 {
+		  for(var i=0;i<=pai.length;i++)
+		 {
+		 document.getElementById("img"+i).src="image0.jpg";	
+		 }
+		}
+		//重新洗牌
+		function shuffle(){
+			
+			for(var a,b,c=pai.length;c;)
+			{
+			 a=Math.floor(Math.random()*c);
+			 b=pai[--c]; //回傳最後
+			 pai[c]=pai[a];
+			 pai[a]=b;
+			 //二值交換
+			}
+			return 0;
+		}
+	    
+		//蓋牌
+		function close(one,two){
+			 var o=document.getElementById("img"+one);
+			 var u=document.getElementById("img"+two);
+			 o.src="image0.jpg";
+			 u.src="image0.jpg";
+		}
+		//檢查是否成功
+		function success(){
+			for(var i=0;i<16;i++){
+				if(pai[i]!=-1)
+					return 0;
+				}
+			alert("過關了");
+			location.reload();
+		}
+	    
+	 //    function showToast(heading, message) {
+	 //    $.toast({
+  //       text: message, // Text that is to be shown in the toast
+  //       heading: heading, // Optional heading to be shown on the toast
+  //       icon: 'warning', // Type of toast icon
+  //       showHideTransition: 'fade', // fade, slide or plain
+  //       allowToastClose: true, // Boolean value true or false
+  //       hideAfter: 2000, // false to make it sticky or number representing the miliseconds as time after which toast needs to be hidden
+  //       stack: 5, // false if there should be only one toast at a time or a number representing the maximum number of toasts to be shown at a time
+  //       position: 'top-right', // bottom-left or bottom-right or bottom-center or top-left or top-right or top-center or mid-center or an object representing the left, right, top, bottom values
+  //       textAlign: 'left',  // Text alignment i.e. left, right or center
+  //       loader: true,  // Whether to show loader or not. True by default
+  //       loaderBg: '#9ec600',  // Background color of the toast loader
+  //       beforeShow: function () { }, // will be triggered before the toast is shown
+  //       afterShown: function () { }, // will be triggered after the toat has been shown
+  //       beforeHide: function () { }, // will be triggered before the toast gets hidden
+  //       afterHidden: function () { }  // will be triggered after the toast has been hidden
+	 //    });
+		// }
+		// $(function () {
+		// showToast("Hint", "請點一下正確的圖案");
+		// });
+	    
+	    
+		shuffle();
+		setTimeout("showtime()",1000);
+		setTimeout("closetime()",4000);
+		
+    </script>
+</head>
+<body>
+    
+    <div style="text-align:center;"> <h1 algin="center" style="color:green;">記憶遊戲</h1> </div>
+    	<table class="ex1" border-top:10px align="center">
+        <tr>
+        <td><img src="image0.jpg" height=120vw width=120vw id="img0" onclick="pocker(0)"/></td>
+        <td><img src="image0.jpg" height=120vw width=120vw id="img1" onclick="pocker(1)"/></td>
+        <td><img src="image0.jpg" height=120vw width=120vw id="img2" onclick="pocker(2)"/></td>
+        <td><img src="image0.jpg" height=120vw width=120vw id="img3" onclick="pocker(3)"/></td>
+        </tr>
+        <tr>
+        <td><img src="image0.jpg" height=120vw width=120vw id="img4" onclick="pocker(4)"/></td>
+        <td><img src="image0.jpg" height=120vw width=120vw id="img5" onclick="pocker(5)"/></td>
+        <td><img src="image0.jpg" height=120vw width=120vw id="img6" onclick="pocker(6)"/></td>
+        <td><img src="image0.jpg" height=120vw width=120vw id="img7" onclick="pocker(7)"/></td>
+        </tr>
+        <tr>
+        <td><img src="image0.jpg" height=120vw width=120vw id="img8" onclick="pocker(8)"/></td>
+        <td><img src="image0.jpg" height=120vw width=120vw id="img9" onclick="pocker(9)"/></td>
+        <td><img src="image0.jpg" height=120vw width=120vw id="img10" onclick="pocker(10)"/></td>
+        <td><img src="image0.jpg" height=120vw width=120vw id="img11" onclick="pocker(11)"/></td>
+        </tr>
+        <tr>
+        <td><img src="image0.jpg" height=120vw width=120vw id="img12" onclick="pocker(12)"/></td>
+        <td><img src="image0.jpg" height=120vw width=120vw id="img13" onclick="pocker(13)"/></td>
+        <td><img src="image0.jpg" height=120vw width=120vw id="img14" onclick="pocker(14)"/></td>
+        <td><img src="image0.jpg" height=120vw width=120vw id="img15" onclick="pocker(15)"/></td>
+        </tr>
+        </table>
+       
+</body>
+</html>

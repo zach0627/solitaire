@@ -1,0 +1,17 @@
+body{
+      background-image:url("bk.jpg");
+      background-color: #cccccc;
+      background-image:repeat-x;
+}
+
+th, td 
+    {
+     padding: 15px;
+
+     }
+
+
+
+
+
+
